@@ -11,7 +11,9 @@ public class Cart {
         itemsOrdered[qtyOrdered++] = disc;
         System.out.println("Added to cart: " + disc.getTitle());
     }
+    public void addDigitalVideoDisc(DVD [] dvdList) {
 
+    }
     public void removeDVD(String title) {
         for (int i = 0; i < qtyOrdered; i++) {
             if (itemsOrdered[i].getTitle().equalsIgnoreCase(title)) {
