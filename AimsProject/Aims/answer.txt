@@ -1,0 +1,12 @@
+
+
+    After swap(jungleDVD, cinderellaDVD), titles are unchanged because Java did not swap the actual references outside the method.
+
+    After changeTitle(jungleDVD, cinderellaDVD.getTitle()), the title of jungleDVD changes to "Cinderella" because the method modified the object the reference points to.
+
+
+    Why does swap not work? Because Java passes the reference by value; only local copies are swapped.
+
+    Why does changeTitle work? Because changing the state of the object via its reference will reflect outside the method.
+
+    Is Java pass-by-value or pass-by-reference? Java is always pass-by-value, but when passing objects, it’s the value of the reference that is passed
