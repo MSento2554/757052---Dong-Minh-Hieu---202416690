@@ -30,16 +30,43 @@ public class Cart {
 
     public void displayCart() {
         if (qtyOrdered == 0) {
-            System.out.println("\nYour cart is empty.");
+            System.out.println("Your cart is empty.");
             return;
         }
 
-        System.out.println("\n=== Your Cart ===");
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
         for (int i = 0; i < qtyOrdered; i++) {
-            DVD disc = itemsOrdered[i];
-            System.out.println((i + 1) + ". " + disc.getTitle() + " (" + disc.getCategory() + ") - $" + disc.getCost());
+            System.out.println((i + 1) + ". " + itemsOrdered[i].toString());
         }
-        System.out.printf("Total cost: $%.2f%n", totalCost());
+        System.out.printf("Total cost: %.2f $%n", totalCost());
+        System.out.println("***************************************************");
+    }
+
+    public void searchById(int id) {
+        boolean found = false;
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].getId() == id) {
+                System.out.println("Found DVD: " + itemsOrdered[i].toString());
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No DVD found with ID: " + id);
+        }
+    }
+    public void searchByTitle(String title) {
+        boolean found = false;
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].isMatch(title)) {
+                System.out.println("Found DVD: " + itemsOrdered[i].toString());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No DVD found with title: \"" + title + "\"");
+        }
     }
 
     public float totalCost() {
