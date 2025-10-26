@@ -42,8 +42,7 @@ public class Cart {
         System.out.printf("Total cost: %.2f $%n", totalCost());
         System.out.println("***************************************************");
     }
-
-    public void searchById(int id) {
+     public void searchById(int id) {
         boolean found = false;
         for (int i = 0; i < qtyOrdered; i++) {
             if (itemsOrdered[i].getId() == id) {
@@ -68,7 +67,6 @@ public class Cart {
             System.out.println("No DVD found with title: \"" + title + "\"");
         }
     }
-
     public float totalCost() {
         float total = 0;
         for (int i = 0; i < qtyOrdered; i++) {
