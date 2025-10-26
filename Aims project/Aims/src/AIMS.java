@@ -12,13 +12,15 @@ public class AIMS {
         store.addDVD(new DVD("Movie 4", "Director D", 130, 14.59f, "Sci-Fi"));
 
         int choice = 0;
-        while (choice != 5) {
+        while (choice != 7) {
             System.out.println("\n=== AIMS MENU ===");
             System.out.println("1. View Store");
             System.out.println("2. View Cart");
             System.out.println("3. Add DVD to Cart");
             System.out.println("4. Remove DVD from Cart");
-            System.out.println("5. Exit");
+            System.out.println("5. Search DVD in Cart by ID");
+            System.out.println("6. Search DVD in Cart by Title");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice (1-5): ");
 
             if (!sc.hasNextInt()) {
@@ -64,8 +66,34 @@ public class AIMS {
                     String titleToRemove = sc.nextLine();
                     cart.removeDVD(titleToRemove);
                 }
-                case 5 : System.out.println("Exiting... Goodbye!");
-                default : System.out.println("Please choose a valid option (1-5).");
+                case 5:
+                        if (cart.isEmpty()) {
+                            System.out.println("Your cart is empty.");
+                            break;
+                        }
+                        System.out.print("Enter DVD ID to search: ");
+                        if (sc.hasNextInt()) {
+                            int id = sc.nextInt();
+                            sc.nextLine();
+                            cart.searchById(id);
+                        } else {
+                            System.out.println("Invalid input.");
+                            sc.nextLine();
+                        }
+                        break;
+                case 6:
+                        if (cart.isEmpty()) {
+                            System.out.println("Your cart is empty.");
+                            break;
+                        }
+                        System.out.print("Enter DVD title to search: ");
+                        String title = sc.nextLine();
+                        cart.searchByTitle(title);
+                        break;             
+
+            
+                case 7 : System.out.println("Exiting... Goodbye!");
+                default : System.out.println("Please choose a valid option (1-7).");
             }
         }
 
