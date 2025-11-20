@@ -1,5 +1,5 @@
 package hust.soict.dsai.aims.cart;
-import hust.soict.dsai.aims.disc.DVD;
+import hust.soict.dsai.aims.media.DVD;
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     private DVD[] itemsOrdered = new DVD[MAX_NUMBERS_ORDERED];

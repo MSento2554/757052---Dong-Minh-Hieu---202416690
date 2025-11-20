@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims;
 import java.util.Scanner;
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.disc.DVD;
+import hust.soict.dsai.aims.media.DVD;
 import hust.soict.dsai.aims.store.Store;
 public class AIMS {
     public static void main(String[] args) {
