@@ -13,7 +13,12 @@ public class Book extends Media {
             System.out.println("Author '" + authorName + "' is already in the list.");
         }
     }
-
+    
+public Book(String title, String category, float cost) {
+    this.title = title;
+    this.category = category;
+    this.cost = cost;
+}
     public void removeAuthor(String authorName) {
         // Check if author IS in the list before removing
         if (authors.contains(authorName)) {
@@ -22,6 +27,10 @@ public class Book extends Media {
             System.out.println("Author '" + authorName + "' not found.");
         }
     }
+    @Override
+public String toString() {
+    return "Book - " + getTitle() + " - " + getCategory() + ": " + getCost() + " $";
+}
 
     public List getAuthors() {
         return authors;
