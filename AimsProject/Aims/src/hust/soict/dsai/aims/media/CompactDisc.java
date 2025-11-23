@@ -49,4 +49,8 @@ public void play() {
         }
         return totalLength;
     }
+    @Override
+public String toString() {
+    return "Book - " + getTitle() + " - " + getCategory() + ": " + getCost() + " $";
+}
 }

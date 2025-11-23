@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.cart;
 import java.util.ArrayList;
 import hust.soict.dsai.aims.media.Media;
-
+import java.util.Collections;
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
@@ -79,11 +79,24 @@ public class Cart {
         }
         return total;
     }
+    // Sorts by Title, then Cost
+    public void sortByTitle() {
+        Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+        System.out.println("Cart sorted by Title (then Cost).");
+    }
 
+    // Sorts by Cost, then Title
+    public void sortByCost() {
+        Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+        System.out.println("Cart sorted by Cost (then Title).");
+    }
     public boolean isEmpty() {
         return itemsOrdered.isEmpty();
     }
-
+    public void emptyCart() {
+    itemsOrdered.clear();
+    System.out.println("Cart has been emptied.");
+}
     public Media searchForMedia(String title) {
         for (Media media : itemsOrdered) {
             if (media.getTitle().equalsIgnoreCase(title)) {

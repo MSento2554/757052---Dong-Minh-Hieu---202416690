@@ -39,7 +39,15 @@ public Media getMedia(int index) {
     }
     return null;
 }
-    
+
+public Media searchMedia(String title) {
+    for (Media m : itemsInStore) {
+        if (m.getTitle().equalsIgnoreCase(title)) {
+            return m;
+        }
+    }
+    return null;
+}
 public int getQtyInStore() {
     return itemsInStore.size();
 }}
