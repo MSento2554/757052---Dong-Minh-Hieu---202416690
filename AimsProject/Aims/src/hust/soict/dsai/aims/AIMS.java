@@ -2,6 +2,7 @@ package hust.soict.dsai.aims;
 import java.util.Scanner;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.DVD;
+import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
 public class AIMS {
     public static void main(String[] args) {
@@ -9,20 +10,20 @@ public class AIMS {
             Store store = new Store();
             Cart cart = new Cart();
 
-        store.addDVD(new DVD("Movie 1", "Director A", 120, 12.99f, "Action"));
-        store.addDVD(new DVD("Movie 2", "Director B", 90, 9.49f, "Comedy"));
-        store.addDVD(new DVD("Movie 3", "Director C", 110, 11.99f, "Drama"));
-        store.addDVD(new DVD("Movie 4", "Director D", 130, 14.59f, "Sci-Fi"));
+        store.addMedia(new DVD("Movie 1", "Director A", 120, 12.99f, "Action"));
+        store.addMedia(new DVD("Movie 2", "Director B", 90, 9.49f, "Comedy"));
+        store.addMedia(new DVD("Movie 3", "Director C", 110, 11.99f, "Drama"));
+        store.addMedia(new DVD("Movie 4", "Director D", 130, 14.59f, "Sci-Fi"));
 
         int choice = 0;
         while (choice != 7) {
             System.out.println("\n=== AIMS MENU ===");
             System.out.println("1. View Store");
             System.out.println("2. View Cart");
-            System.out.println("3. Add DVD to Cart");
-            System.out.println("4. Remove DVD from Cart");
-            System.out.println("5. Search DVD in Cart by ID");
-            System.out.println("6. Search DVD in Cart by Title");
+            System.out.println("3. Add Media to Cart");
+            System.out.println("4. Remove Media from Cart");
+            System.out.println("5. Search Media in Cart by ID");
+            System.out.println("6. Search Media in Cart by Title");
             System.out.println("7. Exit");
             System.out.print("Enter your choice (1-5): ");
 
@@ -41,10 +42,10 @@ public class AIMS {
                 case 3 : {
                     store.displayStore();
                     if (store.getQtyInStore() == 0) {
-                        System.out.println("No DVDs available to add.");
+                        System.out.println("No Media available to add.");
                         return;
                     }
-                    System.out.print("Enter the number of the DVD to add: ");
+                    System.out.print("Enter the number of the Media to add: ");
                     if (!sc.hasNextInt()) {
                         System.out.println("Invalid input.");
                         sc.nextLine();
@@ -52,11 +53,11 @@ public class AIMS {
                     }
                     int addIndex = sc.nextInt() - 1;
                     sc.nextLine();
-                    DVD toAdd = store.getDVDByIndex(addIndex);
+                    Media toAdd = store.getMedia(addIndex); 
                     if (toAdd != null) {
-                        cart.addDVD(toAdd);
-                    } else {
-                        System.out.println("Invalid DVD number.");
+                        cart.addMedia(toAdd);
+                    }else {
+                    System.out.println("Invalid media number.");
                     }
                 }
                 case 4 : {
@@ -65,16 +66,21 @@ public class AIMS {
                         return;
                     }
                     cart.displayCart();
-                    System.out.print("Enter the title of the DVD to remove: ");
+                    System.out.print("Enter the title of the media to remove: ");
                     String titleToRemove = sc.nextLine();
-                    cart.removeDVD(titleToRemove);
+                    Media media = cart.searchForMedia(titleToRemove);
+                    if (media != null) {
+                        cart.removeMedia(media);
+                    } else {
+                        System.out.println("Media not found in cart.");
+}
                 }
                 case 5:
                         if (cart.isEmpty()) {
                             System.out.println("Your cart is empty.");
                             break;
                         }
-                        System.out.print("Enter DVD ID to search: ");
+                        System.out.print("Enter Media ID to search: ");
                         if (sc.hasNextInt()) {
                             int id = sc.nextInt();
                             sc.nextLine();
@@ -89,7 +95,7 @@ public class AIMS {
                             System.out.println("Your cart is empty.");
                             break;
                         }
-                        System.out.print("Enter DVD title to search: ");
+                        System.out.print("Enter Media title to search: ");
                         String title = sc.nextLine();
                         cart.searchByTitle(title);
                         break;             
