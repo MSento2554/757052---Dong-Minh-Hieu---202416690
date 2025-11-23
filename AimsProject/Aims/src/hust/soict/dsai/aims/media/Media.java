@@ -44,5 +44,18 @@ protected float cost;
     }
     return false;
 }
-
+@Override
+public boolean equals(Object obj) {
+    if (this == obj) {
+        return true;
+    }
+    if (obj == null || !(obj instanceof Media)) {
+        return false;
+    }
+    Media otherMedia = (Media) obj;
+    if (this.title == null) {
+        return otherMedia.title == null;
+    }
+    return this.title.equals(otherMedia.title);
+}
 }
