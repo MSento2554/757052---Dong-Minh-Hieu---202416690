@@ -1,0 +1,11 @@
+1. What class should implement the Comparable interface?
+
+The Media class should implement the Comparable<Media> interface.
+
+Reason: Since Book, DigitalVideoDisc, and CompactDisc all inherit from Media, implementing the interface in the parent Media class ensures that all types of media can be compared with each other. This defines the "natural ordering" for any object in your cart.
+
+2. How should you implement the compareTo() method?
+
+The compareTo() method must define one specific default sorting rule. Based on the previous exercises, the most logical "natural" order is alphabetical by Title.
+
+If two items have the same title, we can follow the rule from (higher cost first) as a tie-breaker.
