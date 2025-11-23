@@ -37,4 +37,12 @@ protected float cost;
     public void setCost(float cost) {
         this.cost = cost;
     }
+
+    public boolean isMatch(String title) {
+    if (this.title != null && title != null) {
+        return this.title.equalsIgnoreCase(title.trim());
+    }
+    return false;
+}
+
 }
